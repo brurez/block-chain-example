@@ -75,6 +75,10 @@ class BlockChain
   end
 
   def mine_pending_transactions(reward_address)
+    if @pending_transactions.empty?
+      puts 'No pending transactions to mine!'
+      return
+    end
     transaction = Transaction.new(nil, reward_address, @mine_reward)
     @pending_transactions.push transaction
 

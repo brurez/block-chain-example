@@ -17,6 +17,12 @@ describe BlockChain do
   end
 
   describe '#mine_pending_transactions' do
+    it 'doest give rewards when no pending transactions' do
+      block_chain = BlockChain.new
+      block_chain.mine_pending_transactions('me@email.com')
+      expect(block_chain.balance_of('me@email.com')).to be 0
+    end
+
     it 'mines pending transactions and add to block' do
       block_chain = BlockChain.new
 
